@@ -24,6 +24,41 @@ const createElement = (tag, className) => {
   return element;
 };
 
+// Variables to store the first and second clicked cards
+let firstCard = '';
+let secondCard = '';
+
+// Function to check if the game is over
+const checkEndGame = () => {
+  const disabledCards = document.querySelectorAll(".disabled-card");
+
+  if(disabledCards.length === 20) {
+    setTimeout(() => {
+      alert("Congratulations, You won the game!");
+    }, 500);
+}}
+
+// Function to check if the cards match
+const checkCards = () => {
+  const firstTeam = firstCard.getAttribute("data-teams");
+  const secondTeam = secondCard.getAttribute("data-teams");
+
+  if(firstTeam === secondTeam) {
+    firstCard.firstChild.classList.add("disabled-card");
+    secondCard.firstChild.classList.add("disabled-card");
+    firstCard = '';
+    secondCard = '';
+
+    checkEndGame();
+  } else {
+    setTimeout(() => {
+        firstCard.classList.remove("reveal-card");
+        secondCard.classList.remove("reveal-card");
+        firstCard = '';
+        secondCard = '';
+    }, 500);
+}}
+
 // Function to reveal the card.
 const revealCard = ({ target }) => {
   if (target.parentNode.classList.add("reveal-card")) {
@@ -52,6 +87,7 @@ const createCard = (team) => {
   card.appendChild(back);
 
   card.addEventListener("click", revealCard);
+  card.setAttribute("data-teams", team);
 
   return card;
 };

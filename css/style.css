@@ -25,8 +25,8 @@ body {
   position: absolute;
   border-radius: 0.5rem;
   border: 2px solid black;
-  /* background-size: 100% 100%; */
-  /* background-position: center; */
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 .front {
@@ -40,4 +40,9 @@ body {
 
 .reveal-card {
   transform: rotateY(180deg);
+}
+
+.disabled-card {
+  filter: saturate(0);
+  opacity: 0.5;
 }

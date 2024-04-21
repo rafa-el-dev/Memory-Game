@@ -1,5 +1,7 @@
+// Selects the element with the "grid" class in HTML and stores it in a constant
 const grid = document.querySelector(".grid");
 
+// Array with football team names
 const teams = [
   "arsenal",
   "athletico-de-madrid",
@@ -22,8 +24,24 @@ const createElement = (tag, className) => {
   return element;
 };
 
+// Function to reveal the card.
+const revealCard = ({ target }) => {
+  if (target.parentNode.classList.add("reveal-card")) {
+    return;
+  }
+
+  if (firstCard === '') {
+    target.parentNode.classList.add("reveal-card");
+    firstCard = target.parentNode;
+} else if (secondCard === '') {
+    target.parentNode.classList.add("reveal-card");
+    secondCard = target.parentNode;
+
+    checkCards();
+}}
+
 // Function to create a card for a specific team
-const createCard = (team) => {  
+const createCard = (team) => {
   const card = createElement("div", "card");
   const front = createElement("div", "face front");
   const back = createElement("div", "face back");
@@ -32,6 +50,8 @@ const createCard = (team) => {
 
   card.appendChild(front);
   card.appendChild(back);
+
+  card.addEventListener("click", revealCard);
 
   return card;
 };

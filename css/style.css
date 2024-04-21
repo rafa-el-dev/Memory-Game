@@ -14,8 +14,6 @@ body {
 .card {
   aspect-ratio: 3/4;
   width: 100%;
-  background-color: yellow;
-  /* border-radius: 0.5rem; */
   position: relative;
   transition: all 400ms ease;
   transform-style: preserve-3d;
@@ -27,12 +25,12 @@ body {
   position: absolute;
   border-radius: 0.5rem;
   border: 2px solid black;
+  /* background-size: 100% 100%; */
+  /* background-position: center; */
 }
 
 .front {
-  background-color: red;
   transform: rotateY(180deg);
-
 }
 
 .back {
@@ -40,6 +38,6 @@ body {
   backface-visibility: hidden;
 }
 
-.card:hover {
+.reveal-card {
   transform: rotateY(180deg);
 }

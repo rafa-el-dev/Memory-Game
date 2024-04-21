@@ -54,3 +54,14 @@
   text-align: center;
   cursor: pointer;
 }
+
+.login-button:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.login-button:hover {
+  background-color: #050F54;
+  color: #a3c1e6;
+  transition: all 400ms ease;
+} 

@@ -2,6 +2,7 @@
 const grid = document.querySelector(".grid");
 const playerDisplay = document.querySelector(".player");
 const timerDisplay = document.querySelector(".timer");
+const movesDisplay = document.querySelector(".moves");
 
 // Array with football team names
 const teams = [
@@ -29,6 +30,7 @@ const createElement = (tag, className) => {
 // Variables to store the first and second clicked cards
 let firstCard = '';
 let secondCard = '';
+let moves = 0;
 
 // Function to check if the game is over
 const checkEndGame = () => {
@@ -37,7 +39,7 @@ const checkEndGame = () => {
   if(disabledCards.length === 20) {
     setTimeout(() => {
       clearInterval(this.loop);
-      alert(`Congratulations, ${playerDisplay.innerHTML}, you won in ${timerDisplay.innerHTML} seconds!`);
+      alert(`Congratulations, ${playerDisplay.innerHTML}, you won in ${timerDisplay.innerHTML} seconds with ${moves} moves!`);
     }, 500);
 }}
 
@@ -74,6 +76,9 @@ const revealCard = ({ target }) => {
 } else if (secondCard === '') {
     target.parentNode.classList.add("reveal-card");
     secondCard = target.parentNode;
+
+    moves++;
+    movesDisplay.innerHTML = moves;
 
     checkCards();
 }}

@@ -9,22 +9,17 @@
 
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
   <title>UCL Memory Game</title>
 </head>
 <body>
   <main>
     <header>
       <span class="player"></span>
+      <span class="moves-display">Moves: <span class="moves">0</span></span>
       <span class="timer-display">Timer: <span class="timer">00</span></span>
     </header>
     <div class="grid"></div>
-
     <button class="restart-button" onclick="restartGame()">Restart</button>
-
   </main>
 
   <script src="/js/script.js"></script>

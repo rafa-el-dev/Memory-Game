@@ -26,13 +26,13 @@ header {
 }
 
 .player {
-  color: #a3c1e6;
+  color: #fff;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
 }
 
 .timer, .timer-display {
-  color: #a3c1e6;
+  color: #fff;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
 }
@@ -86,12 +86,22 @@ header {
 
 .restart-button {
   background-color: #050F54;
-  color: #a3c1e6;
-  margin-top: 2rem;
-  padding: 0.5rem 1rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin: 1.5rem;
+  padding: 0.5rem;
+  width: 10%;
+  min-width: fit-content;
+  max-width: 25%;
   border: 2px solid #B155DC;
   border-radius: 0.5rem;
-  font-size: 1.25rem;
-  letter-spacing: 0.1rem;
+  outline: none;
+  text-align: center;
   cursor: pointer;
 }
+
+.restart-button:hover {
+  background-color: #B155DC;
+  transition: all 400ms ease;
+} 

@@ -121,3 +121,8 @@ window.onload = () => {
   startTimer();
   loadGame();
 }
+
+// Function to restart the game
+const restartGame = () => {
+  window.location = "../index.html";
+}

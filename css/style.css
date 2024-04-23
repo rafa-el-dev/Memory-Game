@@ -12,7 +12,7 @@ main {
   background-size: cover;
 }
 
-header {
+.player-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,19 +25,11 @@ header {
   font-family: sans-serif;
 }
 
-.player {
-  color: #fff;
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
-}
-
-.moves, .moves-display {
-  color: #fff;
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
-}
-
-.timer, .timer-display {
+.player,
+.moves-display,
+.moves,
+.timer-display,
+.timer {
   color: #fff;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
@@ -58,6 +50,10 @@ header {
   position: relative;
   transition: all 400ms ease;
   transform-style: preserve-3d;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .face {
@@ -95,7 +91,7 @@ header {
   color: #fff;
   font-size: 1.5rem;
   font-weight: bolder;
-  margin: 1.5rem;
+  margin: 2rem;
   padding: 0.5rem;
   width: 10%;
   min-width: fit-content;
@@ -110,4 +106,38 @@ header {
 .restart-button:hover {
   background-color: #B155DC;
   transition: all 400ms ease;
-} 
+}
+
+@media only screen and (max-width: 668px) {
+  .player-info {
+    width: 90%;
+    align-items: center;
+    padding: 0.75rem;
+    margin: 1.5rem;
+  }
+
+  .player,
+  .moves-display,
+  .moves,
+  .timer-display,
+  .timer {
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    width: 85%;
+    margin-top: 1rem;
+  }
+
+  .restart-button {
+    font-size: 1rem;
+    margin: 1.5rem;
+    width: fit-content; 
+    max-width: none; 
+  }
+}

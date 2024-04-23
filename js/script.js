@@ -3,6 +3,7 @@ const grid = document.querySelector(".grid");
 const playerDisplay = document.querySelector(".player");
 const timerDisplay = document.querySelector(".timer");
 const movesDisplay = document.querySelector(".moves");
+const restartButton = document.querySelector(".restart-button");
 
 // Array with football team names
 const teams = [
@@ -14,8 +15,6 @@ const teams = [
   "inter",
   "man-city",
   "man-utd",
-  // 'milan',
-  // 'porto',
   "psg",
   "real-madrid",
 ];
@@ -27,53 +26,53 @@ const createElement = (tag, className) => {
   return element;
 };
 
-// Variables to store the first and second clicked cards
-let firstCard = '';
-let secondCard = '';
+// Variables to store the moves, first and second cards
+let firstCard = null;
+let secondCard = null;
 let moves = 0;
 
 // Function to check if the game is over
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll(".disabled-card");
 
-  if(disabledCards.length === 20) {
-    setTimeout(() => {
-      clearInterval(this.loop);
-      alert(`Congratulations, ${playerDisplay.innerHTML}, you won in ${timerDisplay.innerHTML} seconds with ${moves} moves!`);
-    }, 500);
-}}
+  if (disabledCards.length === 20) {
+    clearInterval(this.loop);
+    alert(`Parabéns, ${playerDisplay.innerHTML}, você venceu em ${timerDisplay.innerHTML} segundos com ${moves} movimentos!`);
+  }
+};
 
 // Function to check if the cards match
 const checkCards = () => {
   const firstTeam = firstCard.getAttribute("data-teams");
   const secondTeam = secondCard.getAttribute("data-teams");
 
-  if(firstTeam === secondTeam) {
+  if (firstTeam === secondTeam) {
     firstCard.firstChild.classList.add("disabled-card");
     secondCard.firstChild.classList.add("disabled-card");
-    firstCard = '';
-    secondCard = '';
+    firstCard = null;
+    secondCard = null;
 
     checkEndGame();
   } else {
     setTimeout(() => {
-        firstCard.classList.remove("reveal-card");
-        secondCard.classList.remove("reveal-card");
-        firstCard = '';
-        secondCard = '';
+      firstCard.classList.remove("reveal-card");
+      secondCard.classList.remove("reveal-card");
+      firstCard = null;
+      secondCard = null;
     }, 500);
-}}
+  }
+};
 
 // Function to reveal the card.
 const revealCard = ({ target }) => {
-  if (target.parentNode.classList.add("reveal-card")) {
+  if (target.parentNode.classList.contains("reveal-card")) {
     return;
   }
 
-  if (firstCard === '') {
+  if (firstCard === null) {
     target.parentNode.classList.add("reveal-card");
     firstCard = target.parentNode;
-} else if (secondCard === '') {
+  } else if (secondCard === null) {
     target.parentNode.classList.add("reveal-card");
     secondCard = target.parentNode;
 
@@ -81,7 +80,8 @@ const revealCard = ({ target }) => {
     movesDisplay.innerHTML = moves;
 
     checkCards();
-}}
+  }
+};
 
 // Function to create a card for a specific team
 const createCard = (team) => {
@@ -112,22 +112,33 @@ const loadGame = () => {
   });
 };
 
+// Variable to store the timer interval
+let timerInterval;
+
 // Function to start the timer
 const startTimer = () => {
-  this.loop = setInterval(() => {
-    timerDisplay.innerHTML = parseInt(timerDisplay.innerHTML) + 1;
+  let seconds = 0;
+  timerInterval = setInterval(() => {
+    seconds++;
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
   }, 1000);
-}
+};
+
+// Function to start the game
+const restartGame = () => {
+  clearInterval(timerInterval);
+  window.location.href = "../pages/index.html";
+};
 
 // Function to start the game
 window.onload = () => {
   playerDisplay.innerHTML = localStorage.getItem("player");
 
+  restartButton.addEventListener("click", restartGame);
+  restartButton.setAttribute("data-action", "restart");
+
   startTimer();
   loadGame();
-}
-
-// Function to restart the game
-const restartGame = () => {
-  window.location = "../index.html";
-}
+};

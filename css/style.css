@@ -1,13 +1,15 @@
+body {
+  height: 100vh;
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* width: 100%; */
   min-height: 100vh;
   background: url("../assets/bg5.webp") no-repeat center center;
   background-size: cover;
-  padding: 1.25rem 1.25rem 3rem;
 }
 
 header {
@@ -17,9 +19,22 @@ header {
   width: 100%;
   max-width: 800px;
   padding: 1.5rem;
-  margin: 0 0 1rem;
-  background-color: #fff;
+  background-color: #050F54;
+  border: 2px solid #B155DC;
   border-radius: 0.5rem;
+  font-family: sans-serif;
+}
+
+.player {
+  color: #a3c1e6;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+.timer, .timer-display {
+  color: #a3c1e6;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
 }
 
 .grid {
@@ -28,11 +43,11 @@ header {
   gap: 1rem;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem 0 0;
 }
 
 .card {
-  aspect-ratio: 3/4;
+  aspect-ratio: 1/1;
   width: 100%;
   position: relative;
   transition: all 400ms ease;
@@ -44,7 +59,7 @@ header {
   height: 100%;
   position: absolute;
   border-radius: 0.5rem;
-  border: 2px solid black;
+  border: 2px solid #B155DC;
   background-size: 100% 100%;
   background-position: center;
 }
@@ -56,6 +71,7 @@ header {
 
 .back {
   background-image: url("../assets/backcard.webp");
+  background-size: cover;
   backface-visibility: hidden;
 }
 
@@ -65,5 +81,17 @@ header {
 
 .disabled-card {
   filter: saturate(0);
-  opacity: 0.5;
+  opacity: 0.8;
+}
+
+.restart-button {
+  background-color: #050F54;
+  color: #a3c1e6;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #B155DC;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
 }

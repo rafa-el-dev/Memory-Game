@@ -1,5 +1,7 @@
-// Selects the element with the "grid" class in HTML and stores it in a constant
+// Selects the elements with a specific class in HTML and stores it in a constant
 const grid = document.querySelector(".grid");
+const playerDisplay = document.querySelector(".player");
+const timerDisplay = document.querySelector(".timer");
 
 // Array with football team names
 const teams = [
@@ -34,7 +36,8 @@ const checkEndGame = () => {
 
   if(disabledCards.length === 20) {
     setTimeout(() => {
-      alert("Congratulations, You won the game!");
+      clearInterval(this.loop);
+      alert(`Congratulations, ${playerDisplay.innerHTML}, you won in ${timerDisplay.innerHTML} seconds!`);
     }, 500);
 }}
 
@@ -104,4 +107,17 @@ const loadGame = () => {
   });
 };
 
-loadGame();
+// Function to start the timer
+const startTimer = () => {
+  this.loop = setInterval(() => {
+    timerDisplay.innerHTML = parseInt(timerDisplay.innerHTML) + 1;
+  }, 1000);
+}
+
+// Function to start the game
+window.onload = () => {
+  playerDisplay.innerHTML = localStorage.getItem("player");
+
+  startTimer();
+  loadGame();
+}

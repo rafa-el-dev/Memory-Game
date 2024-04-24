@@ -82,7 +82,7 @@ const createCard = (team) => {
   const front = createElement("div", "face front");
   const back = createElement("div", "face back");
 
-  front.style.backgroundImage = `url("../assets/${team}.webp")`;
+  front.style.backgroundImage = `url("./assets/${team}.webp")`;
 
   card.appendChild(front);
   card.appendChild(back);
@@ -118,7 +118,7 @@ const startTimer = () => {
 
 const restartGame = () => {
   clearInterval(timerInterval);
-  window.location.href = "../pages/index.html";
+  window.location.href = "./pages/index.html";
 };
 
 window.onload = () => {

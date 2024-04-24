@@ -59,7 +59,7 @@ To install and run the UCL Memory Game locally, follow these steps:
 2. **Navigate to the project directory:**
    
    ```bash
-   cd ucl-memory-game
+   cd Memory-Game
 
 3. **Open the index.html file in your web browser.**
 

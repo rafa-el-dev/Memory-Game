@@ -1,11 +1,10 @@
-// Selects the elements with a specific class in HTML and stores it in a constant
+
 const grid = document.querySelector(".grid");
 const playerDisplay = document.querySelector(".player");
 const timerDisplay = document.querySelector(".timer");
 const movesDisplay = document.querySelector(".moves");
 const restartButton = document.querySelector(".restart-button");
 
-// Array with football team names
 const teams = [
   "arsenal",
   "athletico-de-madrid",
@@ -19,19 +18,16 @@ const teams = [
   "real-madrid",
 ];
 
-// Utility function to create HTML elements with a specific class
 const createElement = (tag, className) => {
   const element = document.createElement(tag);
   element.className = className;
   return element;
 };
 
-// Variables to store the moves, first and second cards
 let firstCard = null;
 let secondCard = null;
 let moves = 0;
 
-// Function to check if the game is over
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll(".disabled-card");
 
@@ -41,7 +37,6 @@ const checkEndGame = () => {
   }
 };
 
-// Function to check if the cards match
 const checkCards = () => {
   const firstTeam = firstCard.getAttribute("data-teams");
   const secondTeam = secondCard.getAttribute("data-teams");
@@ -63,7 +58,6 @@ const checkCards = () => {
   }
 };
 
-// Function to reveal the card.
 const revealCard = ({ target }) => {
   if (target.parentNode.classList.contains("reveal-card")) {
     return;
@@ -83,7 +77,6 @@ const revealCard = ({ target }) => {
   }
 };
 
-// Function to create a card for a specific team
 const createCard = (team) => {
   const card = createElement("div", "card");
   const front = createElement("div", "face front");
@@ -100,7 +93,6 @@ const createCard = (team) => {
   return card;
 };
 
-// Function to load the game
 const loadGame = () => {
   const duplicateTeams = [...teams, ...teams];
 
@@ -112,10 +104,8 @@ const loadGame = () => {
   });
 };
 
-// Variable to store the timer interval
 let timerInterval;
 
-// Function to start the timer
 const startTimer = () => {
   let seconds = 0;
   timerInterval = setInterval(() => {
@@ -126,13 +116,11 @@ const startTimer = () => {
   }, 1000);
 };
 
-// Function to start the game
 const restartGame = () => {
   clearInterval(timerInterval);
   window.location.href = "../pages/index.html";
 };
 
-// Function to start the game
 window.onload = () => {
   playerDisplay.innerHTML = localStorage.getItem("player");
 
